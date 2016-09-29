@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <script>
+
+
+//Dummy data
+      var numberTime=[
+        {'number':88,'time':1},
+        {'number':43,'time':2},
+        {'number':32,'time':1},
+        {'number':90,'time':4},
+        {'number':68,'time':3},
+        {'number':11,'time':5}
+
+      ]
+
+//Client-side d3 code
+      var w=400;
+      var h=50;
+      var line=d3.svg.line()
+                .x(function(d){return d.number+8})
+                .y(function(d){return h-d.time})
+                .interpolate('linear');
+      var svg=d3.select('body')
+                .append('svg')
+                .attr({
+                  'width':w,
+                  'height':h
+                  })
+      var path=svg.append('path')
+                  .attr({
+                    d:line(numberTime),
+                    'fill':'none',
+                    'stroke':'blue',
+                  })
+      var label=svg.selectAll('text')
+                    .data(numberTime)
+                    .enter()
+                    .append('text')
+                    .text(function(d){return d.number})
+                    .attr({
+                      x:(function(d){return d.number+8}),
+                      y:(function(d){return h-d.time})
+                    })
+    </script>
+  </body>
+</html>

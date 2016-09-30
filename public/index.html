@@ -69,12 +69,7 @@
     <div class="my-chart">
       <linechart data="data" options="options"></linechart>
     </div>
-    <script>
-       var socket = io.connect();
-       socket.on('numberTime', function(data){
-        $scope.data=data;
-        });
-    </script>
+
 
     <script type="text/javascript">
 
@@ -94,6 +89,11 @@
           //     {x: 5, value: 42, otherValue: 45}
           //   ]
           // };
+
+          var socket = io.connect();
+          socket.on('numberTime', function(data){
+           $scope.data=data;
+           });
 
           $scope.options = {
 margin: {top: 5},

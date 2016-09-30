@@ -95,23 +95,23 @@
             // };
             $scope.data=numberTime;
 
-          $scope.options = {
-              margin: {top: 5},
-              series: [
-                {
-                  axis: "y",
-                  dataset: "numberTime",
-                  key: "value",
-                  label: "A dot series",
-                  color: "hsla(88, 48%, 48%, 1)",
-                  type: ["dot"],
-                  id: "mySeries0"
+            $scope.options = {
+                margin: {top: 5},
+                series: [
+                  {
+                    axis: "y",
+                    dataset: "numberTime",
+                    key: "value",
+                    label: "A dot series",
+                    color: "hsla(88, 48%, 48%, 1)",
+                    type: ["dot"],
+                    id: "mySeries0"
+                  }
+                ],
+                axes: {
+                  x: {min:0,max:5},
+                  y: {min:0,max:100}
                 }
-              ],
-              axes: {
-                x: {min:0,max:5},
-                y: {min:0,max:100}
-              }
               };
         });
     </script>

@@ -72,47 +72,47 @@
 
 
     <script type="text/javascript">
-
+        var time=0;
+        var numberTime=[];
+        var socket = io.connect();
+      socket.on('number', function(data){
+          numberTime.push({x:time++,value:data.number});
+      });
       angular
         .module('app', ['n3-line-chart'])
-
         .controller('MainCtrl', function($scope) {
           //Client-side dummy data
-          // $scope.data = {
-          //   dataset0: [
-          //
-          //     {x: 0, value: 4, otherValue: 14},
-          //     {x: 1, value: 8, otherValue: 1},
-          //     {x: 2, value: 15, otherValue: 11},
-          //     {x: 3, value: 16, otherValue: 14},
-          //     {x: 4, value: 23, otherValue: 87},
-          //     {x: 5, value: 42, otherValue: 45}
-          //   ]
-          // };
-
-          var socket = io.connect();
-          socket.on('numberTime', function(data){
-           $scope.data=data;
-           });
+            // $scope.data = {
+            //   dataset0: [
+            //
+            //     {x: 0, value: 4, otherValue: 14},
+            //     {x: 1, value: 8, otherValue: 1},
+            //     {x: 2, value: 15, otherValue: 11},
+            //     {x: 3, value: 16, otherValue: 14},
+            //     {x: 4, value: 23, otherValue: 87},
+            //     {x: 5, value: 42, otherValue: 45}
+            //   ]
+            // };
+            $scope.data=numberTime;
 
           $scope.options = {
-margin: {top: 5},
-series: [
-  {
-    axis: "y",
-    dataset: "dataset0",
-    key: "value",
-    label: "A dot series",
-    color: "hsla(88, 48%, 48%, 1)",
-    type: ["dot"],
-    id: "mySeries0"
-  }
-],
-axes: {
-  x: {min:0,max:5},
-  y: {min:0,max:100}
-}
-};
+              margin: {top: 5},
+              series: [
+                {
+                  axis: "y",
+                  dataset: "numberTime",
+                  key: "value",
+                  label: "A dot series",
+                  color: "hsla(88, 48%, 48%, 1)",
+                  type: ["dot"],
+                  id: "mySeries0"
+                }
+              ],
+              axes: {
+                x: {min:0,max:5},
+                y: {min:0,max:100}
+              }
+              };
         });
     </script>
   </body>

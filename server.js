@@ -13,5 +13,7 @@ app.get('/',function(req,res){
 
 var listener = io.listen(server);
 listener.sockets.on('connection', function(socket){
-    socket.emit('numberTime', [{'number':23,'time':1},{'number':34,'time':5},{'number':88,'time':3},{'number':90,'time':2}]);
+  setInterval(function(){
+      socket.emit('number', {'number': Math.floor(Math.random() * 100) + 1});
+  }, 1000);
 })

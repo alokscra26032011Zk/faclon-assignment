@@ -62,11 +62,19 @@
     <!-- Reference n3-line-chart -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/line-chart/2.0.28/LineChart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-chart/2.0.28/LineChart.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js" charset="utf-8"></script>
   </head>
   <body ng-controller='MainCtrl'>
     <div class="my-chart">
       <linechart data="data" options="options"></linechart>
     </div>
+    <script>
+       var socket = io.connect();
+       socket.on('numberTime', function(data){
+        $scope.data=data;
+        });
+    </script>
 
     <script type="text/javascript">
 
@@ -74,17 +82,18 @@
         .module('app', ['n3-line-chart'])
 
         .controller('MainCtrl', function($scope) {
-          $scope.data = {
-            dataset0: [
-
-              {x: 0, value: 4, otherValue: 14},
-              {x: 1, value: 8, otherValue: 1},
-              {x: 2, value: 15, otherValue: 11},
-              {x: 3, value: 16, otherValue: 14},
-              {x: 4, value: 23, otherValue: 87},
-              {x: 5, value: 42, otherValue: 45}
-            ]
-          };
+          //Client-side dummy data
+          // $scope.data = {
+          //   dataset0: [
+          //
+          //     {x: 0, value: 4, otherValue: 14},
+          //     {x: 1, value: 8, otherValue: 1},
+          //     {x: 2, value: 15, otherValue: 11},
+          //     {x: 3, value: 16, otherValue: 14},
+          //     {x: 4, value: 23, otherValue: 87},
+          //     {x: 5, value: 42, otherValue: 45}
+          //   ]
+          // };
 
           $scope.options = {
 margin: {top: 5},

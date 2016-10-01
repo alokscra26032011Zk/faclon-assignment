@@ -14,6 +14,6 @@ app.get('/',function(req,res){
 var listener = io.listen(server);
 listener.sockets.on('connection', function(socket){
   setInterval(function(){
-      socket.emit('number', {'number': Math.floor(Math.random() * 100) + 1});
+      socket.emit('numberTime', {'number': Math.floor(Math.random() * 100) + 1,'time':Math.floor(Math.random() * 5) + 1});
   }, 1000);
 })
